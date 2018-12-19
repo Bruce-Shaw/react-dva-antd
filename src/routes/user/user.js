@@ -10,15 +10,13 @@ import './User.less';
 
 export default class User extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
     this.props.dispatch({
       type: 'user/getDataListPages',
     });
   }
 
   hanleChangePage = (current, pageSize) => {
-    const { dispatch, user } = this.props;
-    const { pageObj } = user;
+    const { user: { pageObj } } = this.props;
     pageObj.pageNow = current;
     pageObj.pageSize = pageSize;
     this.props.dispatch({
